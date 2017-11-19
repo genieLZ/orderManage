@@ -11,9 +11,9 @@ import java.util.List;
 
 public class JdbcConn {
 	private static final String driver = "com.mysql.jdbc.Driver";;
-	private static final String url = "jdbc:mysql://119.29.102.149:3306/messageboard?useUnicode=true&characterEncoding=utf-8&useSSL=false";;
+	private static final String url = "jdbc:mysql://localhost:3306/messageboard?useUnicode=true&characterEncoding=utf-8&useSSL=false";;
 	private static final String user = "root";
-	private static final String password = "Cl520@lz";
+	private static final String password = "123456";
 	private Connection conn =null;
 	private PreparedStatement psmt;
 	private ResultSet rs;

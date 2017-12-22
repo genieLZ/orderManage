@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shop.dao.CommodityMapper">
+  <resultMap id="BaseResultMap" type="com.shop.bean.Commodity">
+    <id column="cmdt_id" jdbcType="INTEGER" property="cmdtId" />
+    <result column="cmdt_name" jdbcType="VARCHAR" property="cmdtName" />
+    <result column="cmdt_price" jdbcType="DECIMAL" property="cmdtPrice" />
+    <result column="category_id" jdbcType="INTEGER" property="categoryId" />
+  </resultMap>
+  <resultMap id="WithCategoryResultMap" type="com.shop.bean.Commodity">
+    <id column="cmdt_id" jdbcType="INTEGER" property="cmdtId" />
+    <result column="cmdt_name" jdbcType="VARCHAR" property="cmdtName" />
+    <result column="cmdt_price" jdbcType="DECIMAL" property="cmdtPrice" />
+    <association property="category" javaType="com.shop.bean.Category">
+      <result column="category_name" property="categoryName"/>
+    </association>
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+  cmdt_id, cmdt_name, cmdt_price, category_id
+  </sql>
+  <sql id="WithCategory_Column_List">
+     a.cmdt_id,a.cmdt_name,a.cmdt_price, c.category_name
+  </sql>
+  <select id="selectByExampleWithCategory" resultMap="WithCategoryResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="WithCategory_Column_List" />
+    FROM commodity a
+    LEFT JOIN category c ON a.category_id=c.category_id
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKeyWithCategory" resultMap="WithCategoryResultMap">
+    select
+    <include refid="WithCategory_Column_List" />
+    FROM commodity a
+    LEFT JOIN category c ON a.category_id=c.category_id
+    where cmdt_id = #{cmdtId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByExample" parameterType="com.shop.bean.CommodityExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from commodity
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from commodity
+    where cmdt_id = #{cmdtId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from commodity
+    where cmdt_id = #{cmdtId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.shop.bean.CommodityExample">
+    delete from commodity
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.shop.bean.Commodity">
+    insert into commodity (cmdt_id, cmdt_name, cmdt_price, 
+      category_id)
+    values (#{cmdtId,jdbcType=INTEGER}, #{cmdtName,jdbcType=VARCHAR}, #{cmdtPrice,jdbcType=DECIMAL}, 
+      #{categoryId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shop.bean.Commodity">
+    insert into commodity
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cmdtId != null">
+        cmdt_id,
+      </if>
+      <if test="cmdtName != null">
+        cmdt_name,
+      </if>
+      <if test="cmdtPrice != null">
+        cmdt_price,
+      </if>
+      <if test="categoryId != null">
+        category_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cmdtId != null">
+        #{cmdtId,jdbcType=INTEGER},
+      </if>
+      <if test="cmdtName != null">
+        #{cmdtName,jdbcType=VARCHAR},
+      </if>
+      <if test="cmdtPrice != null">
+        #{cmdtPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="categoryId != null">
+        #{categoryId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.shop.bean.CommodityExample" resultType="java.lang.Long">
+    select count(*) from commodity
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update commodity
+    <set>
+      <if test="record.cmdtId != null">
+        cmdt_id = #{record.cmdtId,jdbcType=INTEGER},
+      </if>
+      <if test="record.cmdtName != null">
+        cmdt_name = #{record.cmdtName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cmdtPrice != null">
+        cmdt_price = #{record.cmdtPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.categoryId != null">
+        category_id = #{record.categoryId,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update commodity
+    set cmdt_id = #{record.cmdtId,jdbcType=INTEGER},
+      cmdt_name = #{record.cmdtName,jdbcType=VARCHAR},
+      cmdt_price = #{record.cmdtPrice,jdbcType=DECIMAL},
+      category_id = #{record.categoryId,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shop.bean.Commodity">
+    update commodity
+    <set>
+      <if test="cmdtName != null">
+        cmdt_name = #{cmdtName,jdbcType=VARCHAR},
+      </if>
+      <if test="cmdtPrice != null">
+        cmdt_price = #{cmdtPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="categoryId != null">
+        category_id = #{categoryId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where cmdt_id = #{cmdtId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shop.bean.Commodity">
+    update commodity
+    set cmdt_name = #{cmdtName,jdbcType=VARCHAR},
+      cmdt_price = #{cmdtPrice,jdbcType=DECIMAL},
+      category_id = #{categoryId,jdbcType=INTEGER}
+    where cmdt_id = #{cmdtId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -5,83 +5,33 @@ package com.orderManage.vo;
  */
 public class ShippingVo {
 
-    private String receiverName;
+    private String name;
 
-    private String receiverPhone;
+    private String phone;
 
-    private String receiverMobile;
+    private String address;
 
-    private String receiverProvince;
-
-    private String receiverCity;
-
-    private String receiverDistrict;
-
-    private String receiverAddress;
-
-    private String receiverZip;
-
-    public String getReceiverName() {
-        return receiverName;
+    public String getName() {
+        return name;
     }
 
-    public void setReceiverName(String receiverName) {
-        this.receiverName = receiverName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getReceiverPhone() {
-        return receiverPhone;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setReceiverPhone(String receiverPhone) {
-        this.receiverPhone = receiverPhone;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
-    public String getReceiverMobile() {
-        return receiverMobile;
+    public String getAddress() {
+        return address;
     }
 
-    public void setReceiverMobile(String receiverMobile) {
-        this.receiverMobile = receiverMobile;
-    }
-
-    public String getReceiverProvince() {
-        return receiverProvince;
-    }
-
-    public void setReceiverProvince(String receiverProvince) {
-        this.receiverProvince = receiverProvince;
-    }
-
-    public String getReceiverCity() {
-        return receiverCity;
-    }
-
-    public void setReceiverCity(String receiverCity) {
-        this.receiverCity = receiverCity;
-    }
-
-    public String getReceiverDistrict() {
-        return receiverDistrict;
-    }
-
-    public void setReceiverDistrict(String receiverDistrict) {
-        this.receiverDistrict = receiverDistrict;
-    }
-
-    public String getReceiverAddress() {
-        return receiverAddress;
-    }
-
-    public void setReceiverAddress(String receiverAddress) {
-        this.receiverAddress = receiverAddress;
-    }
-
-    public String getReceiverZip() {
-        return receiverZip;
-    }
-
-    public void setReceiverZip(String receiverZip) {
-        this.receiverZip = receiverZip;
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

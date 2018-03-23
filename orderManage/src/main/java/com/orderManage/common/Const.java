@@ -7,6 +7,7 @@ import java.util.Set;
 /**
  * Create by LZ
  */
+//常量类
 public class Const {
     public static final String  CURRENT_USER = "currentUser";
     public static final String EMAIL = "email";
@@ -49,7 +50,7 @@ public class Const {
         CANCELED(0,"已取消"),
         NO_PAY(10,"未支付"),
         PAID(20,"已付款"),
-        SHIPPED(40,"已发货"),
+        SHIPPED(40,"已出工"),
         ORDER_SUCCESS(50,"订单完成"),
         ORDER_CLOSE(60,"订单关闭");
 
@@ -78,39 +79,11 @@ public class Const {
         }
     }
 
-    public interface AlipayCallback{
+    public enum EvaluateStatusEnum{
+        NO_EVALUATE(0,"未评价"),
+        EVALUATED(1,"已评价");
 
-        String TRADE_STATUS_WAIT_BUYER_PAY = "WAIT_BUYER_PAY";
-        String TRADE_STATUS_TRADE_SUCCESS = "TRADE_SUCCESS";
-
-        String RESPONSE_SUCCESS = "success";
-        String RESPONSE_FAILED = "failed";
-    }
-
-    public enum PayPlatformEnum{
-
-        ALIPAY(1,"支付宝");
-
-        PayPlatformEnum(int code,String value){
-            this.code = code;
-            this.value = value;
-        }
-        private String value;
-        private int code;
-
-        public String getValue() {
-            return value;
-        }
-
-        public int getCode() {
-            return code;
-        }
-    }
-
-    public enum PaymentTypeEnum{
-        ONLINE_PAY(1,"在线支付");
-
-        PaymentTypeEnum(int code,String value){
+        EvaluateStatusEnum(int code,String value){
             this.code = code;
             this.value = value;
         }
@@ -125,15 +98,14 @@ public class Const {
             return code;
         }
 
-        public static PaymentTypeEnum codeOf(int code){
-            for(PaymentTypeEnum paymentTypeEnum:values()){
-                if (paymentTypeEnum.getCode() == code){
-                    return paymentTypeEnum;
+        public static EvaluateStatusEnum codeOf(int code){
+            for(EvaluateStatusEnum evaluateStatusEnum:values()){
+                if (evaluateStatusEnum.getCode() == code){
+                    return evaluateStatusEnum;
                 }
             }
             throw new RuntimeException("没有找到对应的枚举");
         }
     }
-
 
 }

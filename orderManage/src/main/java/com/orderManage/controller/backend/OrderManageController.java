@@ -1,13 +1,13 @@
 package com.orderManage.controller.backend;
 
 import com.github.pagehelper.PageInfo;
-import com.mmall.common.Const;
-import com.mmall.common.ResponseCode;
-import com.mmall.common.ServiceResponse;
-import com.mmall.pojo.User;
-import com.mmall.service.IOrderService;
-import com.mmall.service.IUserService;
-import com.mmall.vo.OrderVo;
+import com.orderManage.common.Const;
+import com.orderManage.common.ResponseCode;
+import com.orderManage.common.ServerResponse;
+import com.orderManage.pojo.User;
+import com.orderManage.service.IOrderService;
+import com.orderManage.service.IUserService;
+import com.orderManage.vo.OrderVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,63 +31,61 @@ public class OrderManageController {
 
     @RequestMapping("list.do")
     @ResponseBody
-    public ServiceResponse<PageInfo> orderList(HttpSession session, @RequestParam(value = "pageNum",defaultValue = "1") int pageNum, @RequestParam(value = "pageSize",defaultValue = "10") int pageSize){
+    public ServerResponse<PageInfo> orderList(HttpSession session, @RequestParam(value = "pageNum",defaultValue = "1") int pageNum, @RequestParam(value = "pageSize",defaultValue = "10") int pageSize){
         User user = (User) session.getAttribute(Const.CURRENT_USER);
         if(user == null){
-            return ServiceResponse.createByError(ResponseCode.NEED_LOGIN.getCode(),"用户未登录，请登录管理员！");
+            return ServerResponse.createByError(ResponseCode.NEED_LOGIN.getCode(),"用户未登录，请登录管理员！");
         }
         if(iUserService.checkAdminRole(user).isSuccess()){
             //业务逻辑
             return iOrderService.manageList(pageNum,pageSize);
         }else{
-            return ServiceResponse.createByError("没有权限操作！");
+            return ServerResponse.createByError("没有权限操作！");
         }
     }
 
     @RequestMapping("detail.do")
     @ResponseBody
-    public ServiceResponse<OrderVo> orderDetail(HttpSession session, Long orderNo){
+    public ServerResponse<OrderVo> orderDetail(HttpSession session, Long orderNo){
         User user = (User) session.getAttribute(Const.CURRENT_USER);
         if(user == null){
-            return ServiceResponse.createByError(ResponseCode.NEED_LOGIN.getCode(),"用户未登录，请登录管理员！");
+            return ServerResponse.createByError(ResponseCode.NEED_LOGIN.getCode(),"用户未登录，请登录管理员！");
         }
         if(iUserService.checkAdminRole(user).isSuccess()){
             //业务逻辑
             return iOrderService.manageDetail(orderNo);
         }else{
-            return ServiceResponse.createByError("没有权限操作！");
+            return ServerResponse.createByError("没有权限操作！");
         }
     }
 
     @RequestMapping("search.do")
     @ResponseBody
-    public ServiceResponse<PageInfo> orderSearch(HttpSession session, Long orderNo,@RequestParam(value = "pageNum",defaultValue = "1") int pageNum, @RequestParam(value = "pageSize",defaultValue = "10") int pageSize){
+    public ServerResponse<PageInfo> orderSearch(HttpSession session, Long orderNo,@RequestParam(value = "pageNum",defaultValue = "1") int pageNum, @RequestParam(value = "pageSize",defaultValue = "10") int pageSize){
         User user = (User) session.getAttribute(Const.CURRENT_USER);
         if(user == null){
-            return ServiceResponse.createByError(ResponseCode.NEED_LOGIN.getCode(),"用户未登录，请登录管理员！");
+            return ServerResponse.createByError(ResponseCode.NEED_LOGIN.getCode(),"用户未登录，请登录管理员！");
         }
         if(iUserService.checkAdminRole(user).isSuccess()){
             //业务逻辑
             return iOrderService.manageSearch(orderNo,pageNum,pageSize);
         }else{
-            return ServiceResponse.createByError("没有权限操作！");
+            return ServerResponse.createByError("没有权限操作！");
         }
     }
 
-    @RequestMapping("send_goods.do")
+    @RequestMapping("set_working.do")
     @ResponseBody
-    public ServiceResponse<String> orderSendGoods(HttpSession session, Long orderNo){
+    public ServerResponse<String> orderSetWorking(HttpSession session, Long orderNo){
         User user = (User) session.getAttribute(Const.CURRENT_USER);
         if(user == null){
-            return ServiceResponse.createByError(ResponseCode.NEED_LOGIN.getCode(),"用户未登录，请登录管理员！");
+            return ServerResponse.createByError(ResponseCode.NEED_LOGIN.getCode(),"用户未登录，请登录管理员！");
         }
         if(iUserService.checkAdminRole(user).isSuccess()){
             //业务逻辑
-            return iOrderService.manageSendGoods(orderNo);
+            return iOrderService.manageSetWorking(orderNo);
         }else{
-            return ServiceResponse.createByError("没有权限操作！");
+            return ServerResponse.createByError("没有权限操作！");
         }
     }
-
-
 }

@@ -7,37 +7,19 @@ public class Shipping {
 
     private Integer userId;
 
-    private String receiverName;
+    private String phone;
 
-    private String receiverPhone;
-
-    private String receiverMobile;
-
-    private String receiverProvince;
-
-    private String receiverCity;
-
-    private String receiverDistrict;
-
-    private String receiverAddress;
-
-    private String receiverZip;
+    private String address;
 
     private Date createTime;
 
     private Date updateTime;
 
-    public Shipping(Integer id, Integer userId, String receiverName, String receiverPhone, String receiverMobile, String receiverProvince, String receiverCity, String receiverDistrict, String receiverAddress, String receiverZip, Date createTime, Date updateTime) {
+    public Shipping(Integer id, Integer userId, String phone, String address, Date createTime, Date updateTime) {
         this.id = id;
         this.userId = userId;
-        this.receiverName = receiverName;
-        this.receiverPhone = receiverPhone;
-        this.receiverMobile = receiverMobile;
-        this.receiverProvince = receiverProvince;
-        this.receiverCity = receiverCity;
-        this.receiverDistrict = receiverDistrict;
-        this.receiverAddress = receiverAddress;
-        this.receiverZip = receiverZip;
+        this.phone = phone;
+        this.address = address;
         this.createTime = createTime;
         this.updateTime = updateTime;
     }
@@ -62,68 +44,20 @@ public class Shipping {
         this.userId = userId;
     }
 
-    public String getReceiverName() {
-        return receiverName;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setReceiverName(String receiverName) {
-        this.receiverName = receiverName == null ? null : receiverName.trim();
+    public void setPhone(String phone) {
+        this.phone = phone == null ? null : phone.trim();
     }
 
-    public String getReceiverPhone() {
-        return receiverPhone;
+    public String getAddress() {
+        return address;
     }
 
-    public void setReceiverPhone(String receiverPhone) {
-        this.receiverPhone = receiverPhone == null ? null : receiverPhone.trim();
-    }
-
-    public String getReceiverMobile() {
-        return receiverMobile;
-    }
-
-    public void setReceiverMobile(String receiverMobile) {
-        this.receiverMobile = receiverMobile == null ? null : receiverMobile.trim();
-    }
-
-    public String getReceiverProvince() {
-        return receiverProvince;
-    }
-
-    public void setReceiverProvince(String receiverProvince) {
-        this.receiverProvince = receiverProvince == null ? null : receiverProvince.trim();
-    }
-
-    public String getReceiverCity() {
-        return receiverCity;
-    }
-
-    public void setReceiverCity(String receiverCity) {
-        this.receiverCity = receiverCity == null ? null : receiverCity.trim();
-    }
-
-    public String getReceiverDistrict() {
-        return receiverDistrict;
-    }
-
-    public void setReceiverDistrict(String receiverDistrict) {
-        this.receiverDistrict = receiverDistrict == null ? null : receiverDistrict.trim();
-    }
-
-    public String getReceiverAddress() {
-        return receiverAddress;
-    }
-
-    public void setReceiverAddress(String receiverAddress) {
-        this.receiverAddress = receiverAddress == null ? null : receiverAddress.trim();
-    }
-
-    public String getReceiverZip() {
-        return receiverZip;
-    }
-
-    public void setReceiverZip(String receiverZip) {
-        this.receiverZip = receiverZip == null ? null : receiverZip.trim();
+    public void setAddress(String address) {
+        this.address = address == null ? null : address.trim();
     }
 
     public Date getCreateTime() {

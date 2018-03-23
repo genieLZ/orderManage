@@ -6,45 +6,30 @@ import java.util.Date;
 public class Order {
     private Integer id;
 
-    private Long orderNo;
+    private Long orderno;
 
     private Integer userId;
 
+    private Integer skillId;
+
     private Integer shippingId;
-
-    private BigDecimal payment;
-
-    private Integer paymentType;
-
-    private Integer postage;
 
     private Integer status;
 
-    private Date paymentTime;
-
-    private Date sendTime;
-
-    private Date endTime;
-
-    private Date closeTime;
+    private BigDecimal price;
 
     private Date createTime;
 
     private Date updateTime;
 
-    public Order(Integer id, Long orderNo, Integer userId, Integer shippingId, BigDecimal payment, Integer paymentType, Integer postage, Integer status, Date paymentTime, Date sendTime, Date endTime, Date closeTime, Date createTime, Date updateTime) {
+    public Order(Integer id, Long orderno, Integer userId, Integer skillId, Integer shippingId, Integer status, BigDecimal price, Date createTime, Date updateTime) {
         this.id = id;
-        this.orderNo = orderNo;
+        this.orderno = orderno;
         this.userId = userId;
+        this.skillId = skillId;
         this.shippingId = shippingId;
-        this.payment = payment;
-        this.paymentType = paymentType;
-        this.postage = postage;
         this.status = status;
-        this.paymentTime = paymentTime;
-        this.sendTime = sendTime;
-        this.endTime = endTime;
-        this.closeTime = closeTime;
+        this.price = price;
         this.createTime = createTime;
         this.updateTime = updateTime;
     }
@@ -61,12 +46,12 @@ public class Order {
         this.id = id;
     }
 
-    public Long getOrderNo() {
-        return orderNo;
+    public Long getOrderno() {
+        return orderno;
     }
 
-    public void setOrderNo(Long orderNo) {
-        this.orderNo = orderNo;
+    public void setOrderno(Long orderno) {
+        this.orderno = orderno;
     }
 
     public Integer getUserId() {
@@ -77,36 +62,20 @@ public class Order {
         this.userId = userId;
     }
 
+    public Integer getSkillId() {
+        return skillId;
+    }
+
+    public void setSkillId(Integer skillId) {
+        this.skillId = skillId;
+    }
+
     public Integer getShippingId() {
         return shippingId;
     }
 
     public void setShippingId(Integer shippingId) {
         this.shippingId = shippingId;
-    }
-
-    public BigDecimal getPayment() {
-        return payment;
-    }
-
-    public void setPayment(BigDecimal payment) {
-        this.payment = payment;
-    }
-
-    public Integer getPaymentType() {
-        return paymentType;
-    }
-
-    public void setPaymentType(Integer paymentType) {
-        this.paymentType = paymentType;
-    }
-
-    public Integer getPostage() {
-        return postage;
-    }
-
-    public void setPostage(Integer postage) {
-        this.postage = postage;
     }
 
     public Integer getStatus() {
@@ -117,36 +86,12 @@ public class Order {
         this.status = status;
     }
 
-    public Date getPaymentTime() {
-        return paymentTime;
+    public BigDecimal getPrice() {
+        return price;
     }
 
-    public void setPaymentTime(Date paymentTime) {
-        this.paymentTime = paymentTime;
-    }
-
-    public Date getSendTime() {
-        return sendTime;
-    }
-
-    public void setSendTime(Date sendTime) {
-        this.sendTime = sendTime;
-    }
-
-    public Date getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(Date endTime) {
-        this.endTime = endTime;
-    }
-
-    public Date getCloseTime() {
-        return closeTime;
-    }
-
-    public void setCloseTime(Date closeTime) {
-        this.closeTime = closeTime;
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
 
     public Date getCreateTime() {

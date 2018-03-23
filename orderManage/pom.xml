@@ -1,12 +1,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com</groupId>
-  <artifactId>mmall</artifactId>
+  <artifactId>orderManage</artifactId>
   <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>mmall Maven Webapp</name>
+  <name>orderManage Maven Webapp</name>
   <url>http://maven.apache.org</url>
+
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -23,7 +24,7 @@
     <dependency>
       <groupId>org.apache.tomcat</groupId>
       <artifactId>tomcat-servlet-api</artifactId>
-      <version>7.0.64</version>
+      <version>9.0.1</version>
     </dependency>
 
     <dependency>
@@ -248,7 +249,7 @@
 
 
   <build>
-    <finalName>mmall</finalName>
+    <finalName>orderManage</finalName>
     <plugins>
       <plugin>
         <groupId>org.mybatis.generator</groupId>
@@ -275,5 +276,4 @@
       </plugin>
     </plugins>
   </build>
-
 </project>

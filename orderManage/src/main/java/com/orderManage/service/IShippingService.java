@@ -1,21 +1,28 @@
 package com.orderManage.service;
 
 import com.github.pagehelper.PageInfo;
-import com.mmall.common.ServiceResponse;
-import com.mmall.pojo.Shipping;
+import com.orderManage.common.ServerResponse;
+import com.orderManage.pojo.Shipping;
 
 /**
  * Create by LZ
  */
+//地址模块接口
 public interface IShippingService {
 
-    ServiceResponse add(Integer userId, Shipping shipping);
+    //前台
+    //新建地址
+    ServerResponse add(Integer userId, Shipping shipping);
 
-    ServiceResponse<String> del(Integer userId, Integer shippingId);
+    //删除地址
+    ServerResponse<String> del(Integer userId, Integer shippingId);
 
-    ServiceResponse update(Integer userId, Shipping shipping);
+    //更新地址
+    ServerResponse update(Integer userId, Shipping shipping);
 
-    ServiceResponse<Shipping> select(Integer userId, Integer shippingId);
+    //查找地址
+    ServerResponse<Shipping> select(Integer userId, Integer shippingId);
 
-    ServiceResponse<PageInfo> list(Integer userId, int pageNum, int pageSize);
+    //浏览地址列表
+    ServerResponse<PageInfo> list(Integer userId, int pageNum, int pageSize);
 }

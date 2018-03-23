@@ -1,83 +1,43 @@
 package com.orderManage.vo;
 
 import java.math.BigDecimal;
-import java.util.List;
+import java.util.Date;
 
 /**
  * Create by LZ
  */
 public class OrderVo {
-    private Long orderNo;
 
-    private BigDecimal payment;
+    private Integer orderno;
 
-    private Integer paymentType;
-
-    private String paymentTypeDesc;
-
-    private Integer postage;
-
-    private Integer status;
-
-    private String statusDesc;
-
-    private String paymentTime;
-
-    private String sendTime;
-
-    private String endTime;
-
-    private String closeTime;
-
-    private String createTime;
-
-    //订单的明细
-    private List<OrderItemVo> orderItemVoList;
-
-    private String imageHost;
-    private Integer shippingId;
-    private String receiverName;
+    private String skillname;
 
     private ShippingVo shippingVo;
 
-    public Long getOrderNo() {
-        return orderNo;
+    private Integer status;
+
+    private BigDecimal price;
+
+    private Date createTime;
+
+    private Integer evaluateStatus;
+
+    private String evaluate;
+
+    public Integer getOrderno() {
+        return orderno;
     }
 
-    public void setOrderNo(Long orderNo) {
-        this.orderNo = orderNo;
+    public void setOrderno(Integer orderno) {
+        this.orderno = orderno;
     }
 
-    public BigDecimal getPayment() {
-        return payment;
+    public String getSkillname() {
+        return skillname;
     }
 
-    public void setPayment(BigDecimal payment) {
-        this.payment = payment;
-    }
-
-    public Integer getPaymentType() {
-        return paymentType;
-    }
-
-    public void setPaymentType(Integer paymentType) {
-        this.paymentType = paymentType;
-    }
-
-    public String getPaymentTypeDesc() {
-        return paymentTypeDesc;
-    }
-
-    public void setPaymentTypeDesc(String paymentTypeDesc) {
-        this.paymentTypeDesc = paymentTypeDesc;
-    }
-
-    public Integer getPostage() {
-        return postage;
-    }
-
-    public void setPostage(Integer postage) {
-        this.postage = postage;
+    public void setSkillname(String skillname) {
+        this.skillname = skillname;
     }
 
     public Integer getStatus() {
@@ -88,84 +48,36 @@ public class OrderVo {
         this.status = status;
     }
 
-    public String getStatusDesc() {
-        return statusDesc;
+    public BigDecimal getPrice() {
+        return price;
     }
 
-    public void setStatusDesc(String statusDesc) {
-        this.statusDesc = statusDesc;
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
 
-    public String getPaymentTime() {
-        return paymentTime;
-    }
-
-    public void setPaymentTime(String paymentTime) {
-        this.paymentTime = paymentTime;
-    }
-
-    public String getSendTime() {
-        return sendTime;
-    }
-
-    public void setSendTime(String sendTime) {
-        this.sendTime = sendTime;
-    }
-
-    public String getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(String endTime) {
-        this.endTime = endTime;
-    }
-
-    public String getCloseTime() {
-        return closeTime;
-    }
-
-    public void setCloseTime(String closeTime) {
-        this.closeTime = closeTime;
-    }
-
-    public String getCreateTime() {
+    public Date getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(String createTime) {
+    public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 
-    public List<OrderItemVo> getOrderItemVoList() {
-        return orderItemVoList;
+    public Integer getEvaluateStatus() {
+        return evaluateStatus;
     }
 
-    public void setOrderItemVoList(List<OrderItemVo> orderItemVoList) {
-        this.orderItemVoList = orderItemVoList;
+    public void setEvaluateStatus(Integer evaluateStatus) {
+        this.evaluateStatus = evaluateStatus;
     }
 
-    public String getImageHost() {
-        return imageHost;
+    public String getEvaluate() {
+        return evaluate;
     }
 
-    public void setImageHost(String imageHost) {
-        this.imageHost = imageHost;
-    }
-
-    public Integer getShippingId() {
-        return shippingId;
-    }
-
-    public void setShippingId(Integer shippingId) {
-        this.shippingId = shippingId;
-    }
-
-    public String getReceiverName() {
-        return receiverName;
-    }
-
-    public void setReceiverName(String receiverName) {
-        this.receiverName = receiverName;
+    public void setEvaluate(String evaluate) {
+        this.evaluate = evaluate;
     }
 
     public ShippingVo getShippingVo() {

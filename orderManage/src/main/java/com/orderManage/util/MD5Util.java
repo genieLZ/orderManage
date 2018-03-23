@@ -5,6 +5,7 @@ import java.security.MessageDigest;
 /**
  * Created by geely
  */
+//MD5加密工具类
 public class MD5Util {
 
     private static String byteArrayToHexString(byte b[]) {

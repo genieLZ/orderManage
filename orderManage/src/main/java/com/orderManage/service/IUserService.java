@@ -1,27 +1,27 @@
 package com.orderManage.service;
 
-import com.mmall.common.ServiceResponse;
-import com.mmall.pojo.User;
+import com.orderManage.common.ServerResponse;
+import com.orderManage.pojo.User;
 
-
+/**
+ * Create by LZ
+ */
+//用户接口
 public interface IUserService {
-    ServiceResponse<User> login(String username, String password);
 
-    ServiceResponse<String> register(User user);
+    //登录
+    ServerResponse<User> login(String username, String password);
 
-    ServiceResponse<String> checkValid(String str, String type);
+    //注册
+    ServerResponse<String> register(User user);
 
-    ServiceResponse selectQuestion(String username);
+    //校验用户名
+    ServerResponse<String> checkValid(String str,String type);
 
-    ServiceResponse<String> checkAnswer(String username, String question, String anwser);
+    //获取当前用户信息
+    ServerResponse<User> getInformation(Integer userId);
 
-    ServiceResponse<String> forgetRestPassword(String username, String passwordNew, String forgetToken);
+    //校验是否管理员
+    ServerResponse checkAdminRole(User user);
 
-    ServiceResponse<String> restPassword(String passwordOld, String passwordNew, User user);
-
-    ServiceResponse<User> updateInformation(User user);
-
-    ServiceResponse<User> getInformation(Integer userId);
-
-    ServiceResponse checkAdminRole(User user);
 }

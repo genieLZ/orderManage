@@ -1,6 +1,6 @@
 package com.orderManage.dao;
 
-import com.mmall.pojo.Shipping;
+import com.orderManage.pojo.Shipping;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
